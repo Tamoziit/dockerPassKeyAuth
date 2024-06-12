@@ -11,7 +11,7 @@ class AuthController {
     }
 
     admitUser(req, res, next) {
-        res.jdon({ ok: true, destination: "/" }); //setting the user to "/" route if authenticated
+        res.json({ ok: true, destination: "/" }); //setting the user to "/" route if authenticated
     }
 
     denyUser(err, req, res, next) {

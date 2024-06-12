@@ -34,7 +34,7 @@ class Register {
                     displayName: challengeResponse.user.name,
                 },
                 challenge: base64url.decode(challengeResponse.challenge), //settuing up the signed challenge
-                publicKeyCredParams: [ //Encrypting the public key credential
+                pubKeyCredParams: [ //Encrypting the public key credential
                     {
                         type: 'public-key',
                         alg: -7, //ES256 cryptographic algo - most preffered
