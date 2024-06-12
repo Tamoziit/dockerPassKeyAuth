@@ -1,0 +1,20 @@
+**PUBLIC CRYPTOGRAPHY
+
+--> *Public PassKey Credentials* : Created during authentication (OTP type concept)
+
+#Phases of passkey auth:
+=> Attestation : Creating a public passkey.
+=> Assertion : Authenticating with a passkey.
+
+#Entities involved in passkey auth
+=> Authenticator : Usually a password manager, smartphone, USB key, other devices, etc.
+=> Client : User interacting with their browser.
+=> Relying Party : Server that supports the application & passkeys.
+
+**ARCHITECTURE INVOLVED
+
+#Creating & verifying a passkey 
+User registers ---> Requests the server for a "challenge"(passkey) --->
+Server creates a random challenge ---> Challenge relayed to client --->
+Client calls a navigator func. "credentials.create(challenge)" ---> 
+Excites the Authenticator to create new key-pair credentials (can be public or private depending on architecture) ---> System pops up a dialog in UI to verify the Client (done through a digital "fingerprint") ---> Once client is verified, the private key is used to sign the challenge received initially from the server ---> The signed challenge & credential id is relayed back to the user(client). ---> Finally the signed challenge with Cred id is send to the server to be verified ---> Once the signature is verified by the relying party(server), using session info, it stores the user credentials in the DB.
